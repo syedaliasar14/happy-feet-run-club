@@ -28,8 +28,7 @@ export function SiteFooter() {
             </span>
           </a>
           <p className="max-w-xs text-sm text-brand-cream/70">
-            A vintage-spirited, modern-running crew. Every Thursday, 6:30 PM —
-            all paces, all people, always free.
+            All paces, all people, always free.
           </p>
         </div>
 

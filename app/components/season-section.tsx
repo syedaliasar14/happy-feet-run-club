@@ -26,9 +26,13 @@ export function SeasonSection() {
   return (
     <section
       id="season"
-      className="border-y-4 border-brand-brown bg-brand-cyan py-20 sm:py-24"
+      className="relative overflow-hidden border-y-4 border-brand-brown bg-brand-cyan py-20 sm:py-24"
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 halftone-dots"
+      />
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-ink uppercase">
           04 — {season.label}
         </p>

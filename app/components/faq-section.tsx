@@ -41,8 +41,12 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section id="faq" className="border-t-4 border-brand-brown bg-muted py-20 sm:py-24">
-      <div className="mx-auto w-full max-w-3xl px-4 sm:px-6">
+    <section id="faq" className="relative overflow-hidden border-t-4 border-brand-brown bg-brand-cyan py-20 sm:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 halftone-dots"
+      />
+      <div className="relative mx-auto w-full max-w-3xl px-4 sm:px-6">
         <p className="text-center font-mono text-xs font-semibold tracking-[0.35em] text-brand-red uppercase">
           06 — FAQ
         </p>
@@ -59,7 +63,7 @@ export function FaqSection() {
             <AccordionItem
               key={faq.question}
               value={faq.question}
-              className="rounded-xl border-2 border-brand-brown bg-card px-5 not-last:border-b-2"
+              className="rounded-xl border-2 border-brand-brown bg-brand-cream px-5 poster-shadow not-last:border-b-2"
             >
               <AccordionTrigger className="py-4 font-display text-xl tracking-wide text-brand-brown hover:text-brand-red hover:no-underline">
                 {faq.question}

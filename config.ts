@@ -8,7 +8,7 @@ export const config = {
     dayOfWeek: "Thursday",
     dayOfWeekIndex: 4, // 0 = Sunday ... 4 = Thursday
     time: "6:30 PM",
-    typicalDistance: "5K social loop",
+    typicalDistance: "5K",
   },
 
   meetup: {
