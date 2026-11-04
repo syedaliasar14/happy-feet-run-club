@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Footprints, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -19,9 +20,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b-2 border-brand-brown bg-brand-cream/95 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-full border-2 border-brand-brown bg-brand-cyan text-brand-ink">
-            <Footprints className="size-5" />
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Happy Feet Run Club logo"
+            width={40}
+            height={40}
+            priority
+            className="size-10"
+          />
           <span className="flex flex-col leading-none">
             <span className="font-display text-xl tracking-wide text-brand-brown">
               HAPPY FEET

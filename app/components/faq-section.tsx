@@ -48,7 +48,7 @@ export function FaqSection() {
       />
       <div className="relative mx-auto w-full max-w-3xl px-4 sm:px-6">
         <p className="text-center font-mono text-xs font-semibold tracking-[0.35em] text-brand-red uppercase">
-          06 — FAQ
+          FAQ
         </p>
         <h2 className="mt-3 text-center font-display text-5xl tracking-wide text-brand-brown sm:text-6xl">
           BEFORE YOU ASK

@@ -1,4 +1,5 @@
-import { AtSign, Footprints } from "lucide-react";
+import Image from "next/image";
+import { AtSign } from "lucide-react";
 import { config } from "@/config";
 
 const footerLinks = [
@@ -15,9 +16,13 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div className="flex flex-col gap-3">
           <a href="#top" className="flex items-center gap-2.5">
-            <span className="flex size-9 items-center justify-center rounded-full bg-brand-cyan text-brand-ink">
-              <Footprints className="size-5" />
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Happy Feet Run Club logo"
+              width={40}
+              height={40}
+              className="size-10"
+            />
             <span className="flex flex-col leading-none">
               <span className="font-display text-xl tracking-wide">
                 HAPPY FEET

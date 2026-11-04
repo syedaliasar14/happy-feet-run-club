@@ -30,7 +30,7 @@ export function MissionSection() {
       />
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-brown uppercase">
-          02 — Our mission
+          Our mission
         </p>
         <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] tracking-wide text-brand-ink sm:text-6xl">
           MAKE RUNNING THE{" "}

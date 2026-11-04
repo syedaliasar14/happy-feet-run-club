@@ -34,7 +34,7 @@ export function SeasonSection() {
       />
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-ink uppercase">
-          04 — {season.label}
+          {season.label}
         </p>
         <h2 className="mt-3 font-display text-5xl tracking-wide text-brand-ink sm:text-6xl">
           ONE SEASON. {runDates.length} THURSDAYS.

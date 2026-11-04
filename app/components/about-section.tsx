@@ -29,7 +29,7 @@ export function AboutSection() {
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div>
           <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-cyan uppercase">
-            01 — About the club
+            About the club
           </p>
           <h2 className="mt-3 font-display text-5xl tracking-wide text-brand-brown sm:text-6xl">
             MORE THAN A RUN CLUB

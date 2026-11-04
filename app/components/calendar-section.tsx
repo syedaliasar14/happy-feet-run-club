@@ -27,7 +27,7 @@ export async function CalendarSection() {
     <section id="calendar" className="bg-brand-cream py-20 sm:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-cyan uppercase">
-          05 — Run calendar
+          Run calendar
         </p>
         <h2 className="mt-3 font-display text-5xl tracking-wide text-brand-brown sm:text-6xl">
           MARK YOUR CALENDAR
