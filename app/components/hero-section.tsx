@@ -6,7 +6,7 @@ export function HeroSection() {
     <section id="top" className="relative overflow-hidden bg-background">
       <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 py-16 text-center sm:px-6">
         <Image
-          src="/logo.svg"
+          src="/logo.png"
           alt="Happy Feet Run Club logo"
           width={160} height={160}
           priority
