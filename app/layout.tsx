@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Archivo, Bebas_Neue, Geist_Mono } from "next/font/google";
+import { Bebas_Neue, Geist_Mono, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import { config } from "@/config";
 import "./globals.css";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+});
+
+const petitCochon = localFont({
+  src: "../fonts/Petit Cochon.ttf",
+  variable: "--font-petit-cochon",
 });
 
 const bebasNeue = Bebas_Neue({
@@ -28,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${bebasNeue.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${petitCochon.variable} ${bebasNeue.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

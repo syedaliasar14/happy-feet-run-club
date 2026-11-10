@@ -5,9 +5,6 @@ import { config } from "@/config";
 const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#details", label: "Run Details" },
-  { href: "#season", label: "Season" },
-  { href: "#calendar", label: "Calendar" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 export function SiteFooter() {
