@@ -25,23 +25,23 @@ const highlights = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-brand-cream py-20 sm:py-24">
+    <section id="about" className="bg-background py-20 sm:py-24">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div>
-          <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-cyan uppercase">
+          <p className="font-mono text-xs font-semibold tracking-[0.35em] text-accent uppercase">
             About the club
           </p>
-          <h2 className="mt-3 font-display text-5xl tracking-wide text-brand-brown sm:text-6xl">
+          <h2 className="mt-3 font-display text-5xl tracking-wide text-foreground sm:text-6xl">
             MORE THAN A RUN CLUB
           </h2>
-          <div className="mt-4 h-1.5 w-24 bg-brand-red" />
-          <p className="mt-6 text-lg text-brand-brown/80">
+          <div className="mt-4 h-1.5 w-24 bg-primary" />
+          <p className="mt-6 text-lg text-foreground/80">
             Happy Feet Run Club started with a simple idea: running is better
             together. We&apos;re the crew that shows up every Thursday evening —
             rain or shine, fast or slow — because the miles fly by when
             you&apos;re sharing them.
           </p>
-          <p className="mt-4 text-lg text-brand-brown/80">
+          <p className="mt-4 text-lg text-foreground/80">
             No membership fees, no pace requirements, no egos. Just a
             welcoming group of runners, a reliable weekly rhythm, and a
             well-earned post-run hang.
@@ -52,15 +52,15 @@ export function AboutSection() {
           {highlights.map((item) => (
             <div
               key={item.title}
-              className="rounded-xl border-2 border-brand-brown bg-card p-5 poster-shadow"
+              className="rounded-xl border-2 border-foreground bg-card p-5 poster-shadow"
             >
-              <div className="flex size-10 items-center justify-center rounded-full border-2 border-brand-brown bg-brand-yellow text-brand-ink">
+              <div className="flex size-10 items-center justify-center rounded-full border-2 border-foreground bg-secondary text-foreground">
                 <item.icon className="size-5" />
               </div>
-              <h3 className="mt-3 font-display text-xl tracking-wide text-brand-brown">
+              <h3 className="mt-3 font-display text-xl tracking-wide text-foreground">
                 {item.title}
               </h3>
-              <p className="mt-1.5 text-sm text-brand-brown/75">{item.text}</p>
+              <p className="mt-1.5 text-sm text-foreground/75">{item.text}</p>
             </div>
           ))}
         </div>

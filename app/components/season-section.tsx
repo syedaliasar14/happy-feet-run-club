@@ -26,51 +26,51 @@ export function SeasonSection() {
   return (
     <section
       id="season"
-      className="relative overflow-hidden border-y-4 border-brand-brown bg-brand-cyan py-20 sm:py-24"
+      className="relative overflow-hidden border-y-4 border-foreground bg-accent py-20 sm:py-24"
     >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 halftone-dots"
       />
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <p className="font-mono text-xs font-semibold tracking-[0.35em] text-brand-ink uppercase">
+        <p className="font-mono text-xs font-semibold tracking-[0.35em] text-foreground uppercase">
           {season.label}
         </p>
-        <h2 className="mt-3 font-display text-5xl tracking-wide text-brand-ink sm:text-6xl">
+        <h2 className="mt-3 font-display text-5xl tracking-wide text-foreground sm:text-6xl">
           ONE SEASON. {runDates.length} THURSDAYS.
         </h2>
 
         <div className="mt-10 flex flex-col items-stretch gap-6 sm:flex-row sm:items-center">
-          <div className="flex-1 rounded-xl border-2 border-brand-brown bg-brand-cream p-6 text-center poster-shadow">
-            <p className="font-mono text-xs font-semibold tracking-[0.3em] text-brand-red uppercase">
+          <div className="flex-1 rounded-xl border-2 border-foreground bg-background p-6 text-center poster-shadow">
+            <p className="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
               Season starts
             </p>
-            <p className="mt-2 font-display text-5xl tracking-wide text-brand-brown">
+            <p className="mt-2 font-display text-5xl tracking-wide text-foreground">
               {start.monthDay.toUpperCase()}
             </p>
-            <p className="text-sm font-semibold text-brand-brown/60">
+            <p className="text-sm font-semibold text-foreground/60">
               {start.year}
             </p>
           </div>
 
           <div className="flex items-center justify-center">
-            <MoveRight className="size-10 rotate-90 text-brand-ink sm:rotate-0" />
+            <MoveRight className="size-10 rotate-90 text-foreground sm:rotate-0" />
           </div>
 
-          <div className="flex-1 rounded-xl border-2 border-brand-brown bg-brand-cream p-6 text-center poster-shadow">
-            <p className="font-mono text-xs font-semibold tracking-[0.3em] text-brand-red uppercase">
+          <div className="flex-1 rounded-xl border-2 border-foreground bg-background p-6 text-center poster-shadow">
+            <p className="font-mono text-xs font-semibold tracking-[0.3em] text-primary uppercase">
               Season finale
             </p>
-            <p className="mt-2 font-display text-5xl tracking-wide text-brand-brown">
+            <p className="mt-2 font-display text-5xl tracking-wide text-foreground">
               {end.monthDay.toUpperCase()}
             </p>
-            <p className="text-sm font-semibold text-brand-brown/60">
+            <p className="text-sm font-semibold text-foreground/60">
               {end.year}
             </p>
           </div>
         </div>
 
-        <p className="mt-8 max-w-2xl text-brand-ink/80">
+        <p className="mt-8 max-w-2xl text-foreground/80">
           We run every {run.dayOfWeek} at {run.time} from the season opener to
           the finale — {runDates.length} weekly runs in total. Miss a week (or
           five)? No shame, just jump back in. The finale wraps up with a

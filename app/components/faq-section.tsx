@@ -41,19 +41,19 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section id="faq" className="relative overflow-hidden border-t-4 border-brand-brown bg-brand-cyan py-20 sm:py-24">
+    <section id="faq" className="relative overflow-hidden border-t-4 border-foreground bg-accent py-20 sm:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 halftone-dots"
       />
       <div className="relative mx-auto w-full max-w-3xl px-4 sm:px-6">
-        <p className="text-center font-mono text-xs font-semibold tracking-[0.35em] text-brand-red uppercase">
+        <p className="text-center font-mono text-xs font-semibold tracking-[0.35em] text-primary uppercase">
           FAQ
         </p>
-        <h2 className="mt-3 text-center font-display text-5xl tracking-wide text-brand-brown sm:text-6xl">
+        <h2 className="mt-3 text-center font-display text-5xl tracking-wide text-foreground sm:text-6xl">
           BEFORE YOU ASK
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-brand-brown/75">
+        <p className="mx-auto mt-4 max-w-xl text-center text-foreground/75">
           Everything first-timers usually want to know. Still curious? Come to
           one {config.run.dayOfWeek} run and ask us in person.
         </p>
@@ -63,12 +63,12 @@ export function FaqSection() {
             <AccordionItem
               key={faq.question}
               value={faq.question}
-              className="rounded-xl border-2 border-brand-brown bg-brand-cream px-5 poster-shadow not-last:border-b-2"
+              className="rounded-xl border-2 border-foreground bg-background px-5 poster-shadow not-last:border-b-2"
             >
-              <AccordionTrigger className="py-4 font-display text-xl tracking-wide text-brand-brown hover:text-brand-red hover:no-underline">
+              <AccordionTrigger className="py-4 font-display text-xl tracking-wide text-foreground hover:text-primary hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-brand-brown/80">
+              <AccordionContent className="text-foreground/80">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
