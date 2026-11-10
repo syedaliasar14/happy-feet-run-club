@@ -1,68 +1,46 @@
-import { Heart, Route, Trophy, Users } from "lucide-react";
-
-const highlights = [
-  {
-    icon: Route,
-    title: "WEEKLY 5K",
-    text: "A social loop that starts and ends at the same spot — nobody gets lost, nobody gets dropped.",
-  },
-  {
-    icon: Users,
-    title: "ALL PACES",
-    text: "From first-timers to PR chasers. Pace groups form naturally, and the back of the pack is a great place to be.",
-  },
-  {
-    icon: Heart,
-    title: "POST-RUN HANGS",
-    text: "The run is only half the club. We refuel together at local spots after every Thursday run.",
-  },
-  {
-    icon: Trophy,
-    title: "SEASON GOALS",
-    text: "Optional challenges through the season — attend streaks, distance bingo, and a finale fun run.",
-  },
-];
+import Image from "next/image";
+import Link from "next/link";
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-background py-20 sm:py-24">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
-        <div>
-          <p className="font-mono text-xs font-semibold tracking-[0.35em] text-accent uppercase">
-            About the club
-          </p>
-          <h2 className="mt-3 font-display text-5xl tracking-wide text-foreground sm:text-6xl">
-            MORE THAN A RUN CLUB
-          </h2>
-          <div className="mt-4 h-1.5 w-24 bg-primary" />
-          <p className="mt-6 text-lg text-foreground/80">
-            Happy Feet Run Club started with a simple idea: running is better
-            together. We&apos;re the crew that shows up every Thursday evening —
-            rain or shine, fast or slow — because the miles fly by when
-            you&apos;re sharing them.
-          </p>
-          <p className="mt-4 text-lg text-foreground/80">
-            No membership fees, no pace requirements, no egos. Just a
-            welcoming group of runners, a reliable weekly rhythm, and a
-            well-earned post-run hang.
-          </p>
+    <section id="about" className="overflow-hidden bg-primary-texture py-24 text-white sm:py-24">
+      <div className="mx-auto flex flex-col md:flex-row w-full max-w-6xl items-center gap-10 md:gap-16 px-4 sm:px-6">
+        <div className="relative aspect-[3/4] w-full min-w-0 flex-1 md:w-auto px-4 pr-12 md:pr-4">
+          <div className="relative aspect-[3/4] shadow-xl">
+            <Image
+              src="/pics/A7401537.jpg"
+              alt="A group of runners enjoying an outdoor run"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+
+            <Image
+              src="/sun-white.svg"
+              alt=""
+              aria-hidden="true"
+              width={160} height={160}
+              className="absolute bottom-0 left-0 z-10 size-24 -translate-x-1/2 translate-y-1/4 sm:size-32 lg:size-40"
+            />
+            <Image
+              src="/run-jog-walk.svg"
+              alt=""
+              aria-hidden="true"
+              width={160} height={168}
+              className="absolute top-0 right-0 z-10 h-28 w-28 translate-x-1/3 md:translate-x-1/2 translate-y-1/2 -rotate-2 sm:h-36 sm:w-36"
+            />
+          </div>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-xl border-2 border-foreground bg-card p-5 poster-shadow"
-            >
-              <div className="flex size-10 items-center justify-center rounded-full border-2 border-foreground bg-secondary text-foreground">
-                <item.icon className="size-5" />
-              </div>
-              <h3 className="mt-3 font-display text-xl tracking-wide text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-1.5 text-sm text-foreground/75">{item.text}</p>
-            </div>
-          ))}
+        <div className="flex w-full min-w-0 flex-1 flex-col items-center self-end  md:mb-12 text-center">
+          <p className="leading-relaxed text-lg md:text-xl text-balance">
+            All paces welcome! Whether you&apos;re a complete beginner, training for
+            your next marathon, or just want to meet new people, come join the
+            crew and find out what makes our feet so happy.
+          </p>
+          <Link href="#details" className="btn-secondary mt-8">
+            Join a Run
+          </Link>
         </div>
       </div>
     </section>

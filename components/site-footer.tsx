@@ -22,20 +22,12 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3">
           <Link href="#top" className="flex items-center gap-2.5">
             <Image
-              src="/logo.png"
+              src="/logo-text-white.svg"
               alt="Happy Feet Run Club logo"
-              width={40}
-              height={40}
-              className="size-10"
+              width={160}
+              height={108}
+              className="h-auto w-40"
             />
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-xl tracking-wide">
-                HAPPY FEET
-              </span>
-              <span className="font-mono text-[0.6rem] font-semibold tracking-[0.3em] text-secondary">
-                RUN CLUB
-              </span>
-            </span>
           </Link>
         </div>
 
