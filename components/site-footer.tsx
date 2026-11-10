@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { connection } from "next/server";
+import { Suspense } from "react";
 import { AtSign } from "lucide-react";
 import { config } from "@/config";
 
@@ -7,6 +9,11 @@ const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#details", label: "Run Details" },
 ];
+
+async function CopyrightYear() {
+  await connection();
+  return new Date().getFullYear();
+}
 
 export function SiteFooter() {
   return (
@@ -62,7 +69,7 @@ export function SiteFooter() {
 
       <div className="border-t border-background/10">
         <div className="mx-auto w-full text-center text-xs text-background/50 p-4">
-          <p>© {new Date().getFullYear()} Happy Feet Run Club. All rights reserved.</p>
+          <p>© <Suspense fallback={null}><CopyrightYear /> </Suspense>{config.title}. All rights reserved.</p>
         </div>
       </div>
     </footer>
