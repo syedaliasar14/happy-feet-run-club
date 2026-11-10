@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { AtSign } from "lucide-react";
 import { config } from "@/config";
 
@@ -9,10 +10,10 @@ const footerLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t-4 border-secondary bg-foreground text-background">
+    <footer className="bg-foreground text-background">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div className="flex flex-col gap-3">
-          <a href="#top" className="flex items-center gap-2.5">
+          <Link href="#top" className="flex items-center gap-2.5">
             <Image
               src="/logo.png"
               alt="Happy Feet Run Club logo"
@@ -28,35 +29,26 @@ export function SiteFooter() {
                 RUN CLUB
               </span>
             </span>
-          </a>
-          <p className="max-w-xs text-sm text-background/70">
-            All paces, all people, always free.
-          </p>
+          </Link>
         </div>
 
         <nav aria-label="Footer">
-          <p className="font-mono text-xs font-semibold tracking-[0.25em] text-accent uppercase">
-            Explore
-          </p>
           <ul className="mt-3 flex flex-col gap-2">
             {footerLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="text-sm text-background/80 transition-colors hover:text-secondary"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <div>
-          <p className="font-mono text-xs font-semibold tracking-[0.25em] text-accent uppercase">
-            Follow the club
-          </p>
-          <a
+          <Link
             href={config.instagramURL || "#"}
             target="_blank"
             rel="noreferrer"
@@ -64,16 +56,13 @@ export function SiteFooter() {
           >
             <AtSign className="size-4" />
             Instagram
-          </a>
+          </Link>
         </div>
       </div>
 
       <div className="border-t border-background/10">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-background/50 sm:flex-row sm:px-6">
-          <p>© 2026 {config.title}. All rights reserved.</p>
-          <p className="font-mono tracking-widest uppercase">
-            Run happy since 2026
-          </p>
+        <div className="mx-auto w-full text-center text-xs text-background/50 p-4">
+          <p>© {new Date().getFullYear()} Happy Feet Run Club. All rights reserved.</p>
         </div>
       </div>
     </footer>
