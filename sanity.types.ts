@@ -28,6 +28,7 @@ export type Homepage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  alertUpdate?: string;
   aboutSection?: {
     image: {
       asset?: SanityImageAssetReference;
@@ -74,6 +75,13 @@ export type SiteSettings = {
   _rev: string;
   title: string;
   description: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   instagramUrl?: string;
 };
 
@@ -198,8 +206,9 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/queries/homepage.ts
 // Variable: HOMEPAGE_QUERY
-// Query: *[_type == "homepage"][0] {    aboutSection {      image {        asset->{          _id,          url        },        alt      },      text    },    detailsSection {      whenText,      whereText,      routeText,      whatsAfterText    },    ctaSection {      slogan,      ctaText    }  }
+// Query: *[_type == "homepage"][0] {    alertUpdate,    aboutSection {      image {        asset->{          _id,          url        },        alt      },      text    },    detailsSection {      whenText,      whereText,      routeText,      whatsAfterText    },    ctaSection {      slogan,      ctaText    }  }
 export type HOMEPAGE_QUERY_RESULT = {
+  alertUpdate: string | null;
   aboutSection: {
     image: {
       asset: {
@@ -224,10 +233,17 @@ export type HOMEPAGE_QUERY_RESULT = {
 
 // Source: sanity/queries/site-settings.ts
 // Variable: SITE_SETTINGS_QUERY
-// Query: *[_type == "siteSettings"][0] {    title,    description,    instagramUrl,  }
+// Query: *[_type == "siteSettings"][0] {    title,    description,    image,    instagramUrl,  }
 export type SITE_SETTINGS_QUERY_RESULT = {
   title: string;
   description: string;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   instagramUrl: string | null;
 } | null;
 
@@ -235,7 +251,7 @@ export type SITE_SETTINGS_QUERY_RESULT = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "homepage"][0] {\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
-    '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    instagramUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
+    '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
+    '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    instagramUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
   }
 }

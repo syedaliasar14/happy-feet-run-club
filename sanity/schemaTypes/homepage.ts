@@ -8,6 +8,11 @@ export const homepage = defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
+      name: 'alertUpdate',
+      title: 'Alert Update',
+      type: 'text',
+    }),
+    defineField({
       name: 'aboutSection',
       title: 'About Section',
       type: 'object',

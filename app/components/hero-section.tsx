@@ -1,7 +1,8 @@
+import { AlertCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export function HeroSection() {
+export function HeroSection({ alertUpdate }: { alertUpdate?: string }) {
   return (
     <section id="top" className="relative overflow-hidden bg-background">
       <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 py-16 text-center sm:px-6">
@@ -32,6 +33,13 @@ export function HeroSection() {
           priority
           className="size-65 block md:hidden"
         />
+
+        {alertUpdate && (
+          <div className="mt-10 mb-4 bg-primary shadow-md shadow-primary/50 flex items-center w-full text-center justify-center p-4 text-white font-medium">
+            <AlertCircleIcon className="inline-block mr-2" />
+            {alertUpdate}
+          </div>
+        )}
 
         <div className="mt-8 flex gap-4">
           <Link href="#details" className="btn-primary">

@@ -14,7 +14,7 @@ export default async function Home() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <HeroSection />
+        <HeroSection alertUpdate={homepage?.alertUpdate || undefined} />
         <AboutSection data={homepage?.aboutSection || undefined} />
         <DetailsSection data={homepage?.detailsSection || undefined} />
         <CtaSection data={homepage?.ctaSection || undefined} />
