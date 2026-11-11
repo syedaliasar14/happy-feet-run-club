@@ -20,6 +20,12 @@ export const siteSettings = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      description: 'Image used for social media sharing and search engine previews.',
+    }),
+    defineField({
       name: 'instagramUrl',
       title: 'Instagram URL',
       type: 'url',
