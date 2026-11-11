@@ -13,14 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-export const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/#details", label: "Join a Run" },
-  { href: "/calendar", label: "Calendar" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/faq", label: "FAQ" },
-];
+import { navLinks } from "@/lib/nav-links";
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -5,13 +5,13 @@ import Link from "next/link";
 export function HeroSection({ alertUpdate }: { alertUpdate?: string }) {
   return (
     <section id="top" className="relative overflow-hidden bg-background">
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 py-16 text-center sm:px-6">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 pt-8 pb-16 text-center sm:px-6">
         <Image
           src="/logo.png"
           alt="Happy Feet Run Club logo"
-          width={160} height={160}
+          width={300} height={300}
           priority
-          className="size-40"
+          className="size-60"
         />
 
         <h1 className="hidden md:block mt-8 font-hero text-7xl tracking-wide text-primary md:text-8xl">

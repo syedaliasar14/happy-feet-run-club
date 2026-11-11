@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AtSign, MailIcon } from "lucide-react";
-import { config } from "@/config";
-import { navLinks } from "@/components/site-header";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
+import { MailIcon } from "lucide-react";
+import { navLinks } from "@/lib/nav-links";
 import { sanityFetch } from "@/sanity/lib/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
 
@@ -11,7 +11,6 @@ export async function SiteFooter() {
     query: SITE_SETTINGS_QUERY,
     stega: false,
   });
-  const instagramUrl = settings?.instagramUrl || config.instagramURL || "#";
 
   return (
     <footer className="bg-foreground text-background">
@@ -26,7 +25,7 @@ export async function SiteFooter() {
         </Link>
 
         <nav aria-label="Footer">
-          <ul className="mt-3 flex flex-col gap-2 text-center md:text-left">
+          <ul className="mt-3 grid gap-2 text-center md:text-left md:grid-cols-2">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -40,12 +39,15 @@ export async function SiteFooter() {
           </ul>
         </nav>
 
-        <div className="flex flex-wrap gap-2 mt-3 md:items-start justify-center">
-          <Link href={instagramUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
-            <AtSign className="size-4" />
+        <div className="flex flex-wrap gap-3 mt-3 md:items-start justify-center">
+          <Link href={settings?.instagramUrl || "#"} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-secondary transition-colors">
+            <FaInstagram className="size-5" />
           </Link>
-          <Link href={settings?.email ? `mailto:${settings.email}` : "#"} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
-            <MailIcon className="size-4" />
+          <Link href={settings?.facebookUrl || "#"} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-secondary transition-colors">
+            <FaFacebook className="size-5" />
+          </Link>
+          <Link href={settings?.email ? `mailto:${settings.email}` : "#"} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-secondary transition-colors">
+            <MailIcon className="size-5" />
           </Link>
         </div>
       </div>

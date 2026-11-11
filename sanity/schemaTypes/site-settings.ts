@@ -40,5 +40,14 @@ export const siteSettings = defineType({
           scheme: ['http', 'https'],
         }),
     }),
+    defineField({
+      name: 'facebookUrl',
+      title: 'Facebook URL',
+      type: 'url',
+      validation: (rule) =>
+        rule.uri({
+          scheme: ['http', 'https'],
+        }),
+    }),
   ],
 })
