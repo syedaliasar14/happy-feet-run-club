@@ -3,6 +3,9 @@ import { Bebas_Neue, Geist_Mono, Luckiest_Guy, Montserrat } from "next/font/goog
 import localFont from "next/font/local";
 import { config } from "@/config";
 import "./globals.css";
+import { DisableDraftMode } from "@/components/disable-draft-mode";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -36,13 +39,18 @@ export const metadata: Metadata = {
   description: config.description,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${montserrat.variable} ${petitCochon.variable} ${bebasNeue.variable} ${geistMono.variable} ${luckiestGuy.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${montserrat.variable} ${petitCochon.variable} ${bebasNeue.variable} ${geistMono.variable} ${luckiestGuy.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {(await draftMode()).isEnabled && (
+          <>
+            <VisualEditing />
+            <DisableDraftMode />
+          </>
+        )}
+      </body>
     </html>
   );
 }
