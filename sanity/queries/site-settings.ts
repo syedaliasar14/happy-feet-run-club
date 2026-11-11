@@ -5,6 +5,7 @@ export const SITE_SETTINGS_QUERY = defineQuery(
     title,
     description,
     image,
+    email,
     instagramUrl,
   }`
 )

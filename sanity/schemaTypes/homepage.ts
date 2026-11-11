@@ -9,8 +9,10 @@ export const homepage = defineType({
   fields: [
     defineField({
       name: 'alertUpdate',
-      title: 'Alert Update',
+      title: 'Alert/Update',
+      description: 'Alert or update message to display on the homepage',
       type: 'text',
+      rows: 3
     }),
     defineField({
       name: 'aboutSection',

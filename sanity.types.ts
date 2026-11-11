@@ -37,8 +37,6 @@ export type FaqPage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  intro?: string;
   faqs?: Array<{
     question: string;
     answer: string;
@@ -140,6 +138,7 @@ export type SiteSettings = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+  email: string;
   instagramUrl?: string;
 };
 
@@ -346,7 +345,7 @@ export type HOMEPAGE_QUERY_RESULT = {
 
 // Source: sanity/queries/site-settings.ts
 // Variable: SITE_SETTINGS_QUERY
-// Query: *[_type == "siteSettings"][0] {    title,    description,    image,    instagramUrl,  }
+// Query: *[_type == "siteSettings"][0] {    title,    description,    image,    email,    instagramUrl,  }
 export type SITE_SETTINGS_QUERY_RESULT = {
   title: string;
   description: string;
@@ -357,6 +356,7 @@ export type SITE_SETTINGS_QUERY_RESULT = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  email: string;
   instagramUrl: string | null;
 } | null;
 
@@ -368,6 +368,6 @@ declare module "@sanity/client" {
     '*[_type == "calendar"][0] {\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
     '*[_type == "faqPage"][0] {\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
     '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
-    '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    instagramUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
+    '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    email,\n    instagramUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
   }
 }

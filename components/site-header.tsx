@@ -8,16 +8,18 @@ import { AlignJustify } from "lucide-react";
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const navLinks = [
+export const navLinks = [
   { href: "/about", label: "About" },
+  { href: "/#details", label: "Join a Run" },
   { href: "/calendar", label: "Calendar" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/faq", label: "FAQ" },
-  { href: "/#details", label: "Details" },
 ];
 
 export function SiteHeader() {
@@ -26,8 +28,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur opacity-90 bg-foreground text-white flex w-full items-center justify-between py-2 px-4">
       <Link href="/" className="mt-1 font-hero text-xl tracking-widest flex items-start gap-2">
-        HAPPY 
-        <Image src="/sun-white.svg" alt="" width={16} height={16} className="mt-0.5"/>
+        HAPPY
+        <Image src="/sun-white.svg" alt="" width={16} height={16} className="mt-0.5" />
         FEET
       </Link>
 
@@ -38,22 +40,32 @@ export function SiteHeader() {
 
         <SheetContent side="right" className="border-background/20 bg-background text-foreground">
           <SheetHeader>
-            <SheetTitle className="font-hero text-2xl tracking-wide text-primary">
-              HAPPY FEET
+            <SheetTitle className="font-hero text-2xl mt-12 self-center tracking-wide text-primary">
+              <Image
+                src="/logo-text.svg"
+                alt="Happy Feet Run Club Logo"
+                width={128}
+                height={32}
+              />
             </SheetTitle>
           </SheetHeader>
-          <nav className="flex flex-col gap-1 px-4">
+          <nav className="flex flex-col gap-1 mt-2 px-4 font-sans">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm font-bold tracking-widest uppercase hover:bg-background/10"
+                className="px-3 py-2 text-sm hover:text-secondary"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
+          <SheetFooter>
+            <div className="mx-auto w-full text-center text-xs text-foreground/50 p-4">
+              <p>© {new Date().getFullYear()} Happy Feet Run Club. All rights reserved.</p>
+            </div>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     </header>

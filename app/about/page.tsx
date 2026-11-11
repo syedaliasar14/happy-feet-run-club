@@ -7,14 +7,14 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { ABOUT_PAGE_QUERY } from "@/sanity/queries/about-page";
 
 export default async function AboutPage() {
-  const { data: aboutPage } = await sanityFetch({ query: ABOUT_PAGE_QUERY });
+  const { data } = await sanityFetch({ query: ABOUT_PAGE_QUERY });
 
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
-        <AboutHeroSection data={aboutPage?.heroSection || undefined} />
-        <MissionSection data={aboutPage?.missionSection || undefined} />
+        <AboutHeroSection data={data?.heroSection || undefined} />
+        <MissionSection data={data?.missionSection || undefined} />
       </main>
       <SiteFooter />
     </>
