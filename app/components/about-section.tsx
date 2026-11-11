@@ -1,19 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
+import { urlFor } from "@/sanity/lib/image";
 
-export function AboutSection() {
+interface AboutSectionProps {
+  data?: {
+    image?: any;
+    text?: string;
+  };
+}
+
+export function AboutSection({ data }: AboutSectionProps) {
+  const imageUrl = data?.image ? urlFor(data.image).url() : null;
+  const text = data?.text || "All paces welcome! Whether you're a complete beginner, training for your next marathon, or just want to meet new people, come join the crew and find out what makes our feet so happy.";
+
   return (
     <section id="about" className="overflow-hidden bg-primary-texture py-24 text-white sm:py-24">
       <div className="mx-auto flex flex-col md:flex-row w-full max-w-6xl items-center gap-10 md:gap-16 px-4 sm:px-6">
         <div className="relative aspect-[3/4] w-full min-w-0 flex-1 md:w-auto px-4 pr-12 md:pr-4">
           <div className="relative aspect-[3/4] shadow-xl">
-            <Image
-              src="/pics/A7401537.jpg"
-              alt="A group of runners enjoying an outdoor run"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
+            {imageUrl ? (
+              <Image
+                src={imageUrl}
+                alt="A group of runners enjoying an outdoor run"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <Image
+                src="/pics/A7401537.jpg"
+                alt="A group of runners enjoying an outdoor run"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            )}
 
             <Image
               src="/sun-white.svg"
@@ -34,9 +55,7 @@ export function AboutSection() {
 
         <div className="flex w-full min-w-0 flex-1 flex-col items-center self-end  md:mb-12 text-center">
           <p className="leading-relaxed text-lg md:text-xl text-balance">
-            All paces welcome! Whether you&apos;re a complete beginner, training for
-            your next marathon, or just want to meet new people, come join the
-            crew and find out what makes our feet so happy.
+            {text}
           </p>
           <Link href="#details" className="btn-secondary mt-8">
             Join a Run

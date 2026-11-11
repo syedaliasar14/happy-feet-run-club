@@ -6,6 +6,8 @@ import "./globals.css";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
+import { SanityLive, sanityFetch } from "@/sanity/lib/live";
+import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -34,10 +36,17 @@ const luckiestGuy = Luckiest_Guy({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: config.title,
-  description: config.description,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { data: settings } = await sanityFetch({
+    query: SITE_SETTINGS_QUERY,
+    stega: false,
+  });
+
+  return {
+    title: settings?.title || config.title,
+    description: settings?.description || config.description,
+  };
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -50,6 +59,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <DisableDraftMode />
           </>
         )}
+        <SanityLive />
       </body>
     </html>
   );

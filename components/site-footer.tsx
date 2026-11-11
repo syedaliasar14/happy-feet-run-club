@@ -4,6 +4,8 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { AtSign } from "lucide-react";
 import { config } from "@/config";
+import { sanityFetch } from "@/sanity/lib/live";
+import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
 
 const footerLinks = [
   { href: "#about", label: "About" },
@@ -15,7 +17,14 @@ async function CopyrightYear() {
   return new Date().getFullYear();
 }
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const { data: settings } = await sanityFetch({
+    query: SITE_SETTINGS_QUERY,
+    stega: false,
+  });
+  const siteTitle = settings?.title || config.title;
+  const instagramUrl = settings?.instagramUrl || config.instagramURL || "#";
+
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
@@ -24,8 +33,7 @@ export function SiteFooter() {
             <Image
               src="/logo-text-white.svg"
               alt="Happy Feet Run Club logo"
-              width={160}
-              height={108}
+              width={160} height={108}
               className="h-auto w-40"
             />
           </Link>
@@ -48,7 +56,7 @@ export function SiteFooter() {
 
         <div>
           <Link
-            href={config.instagramURL || "#"}
+            href={instagramUrl}
             target="_blank"
             rel="noreferrer"
             className="mt-3 inline-flex items-center gap-2 rounded-lg border-2 border-background/20 px-3 py-2 text-sm text-background/80 transition-colors hover:border-accent hover:text-accent"
@@ -61,7 +69,7 @@ export function SiteFooter() {
 
       <div className="border-t border-background/10">
         <div className="mx-auto w-full text-center text-xs text-background/50 p-4">
-          <p>© <Suspense fallback={null}><CopyrightYear /> </Suspense>{config.title}. All rights reserved.</p>
+          <p>© <Suspense fallback={null}><CopyrightYear /> </Suspense>{siteTitle}. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,20 @@
 import { config } from "@/config";
 
-export function DetailsSection() {
+interface DetailsSectionProps {
+  data?: {
+    whenText?: string;
+    whereText?: string;
+    routeText?: string;
+    whatsAfterText?: string;
+  };
+}
+
+export function DetailsSection({ data }: DetailsSectionProps) {
+  const whenText = data?.whenText || "Every Wednesday at 6:30pm";
+  const whereText = data?.whereText || "Across from Smokin' with Chris, Southington, CT";
+  const routeText = data?.routeText || "The route is 5k (3.1 miles). Walkers can turn around after 15 min.";
+  const whatsAfterText = data?.whatsAfterText || "Make new friends and get to know other people by joining us at the post-run social hangout, usually at the local brewery or ice cream place.";
+
   return (
     <section id="details" className="bg-muted py-20 sm:py-24">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
@@ -17,7 +31,7 @@ export function DetailsSection() {
               WHEN
             </h3>
             <p className="mt-3 text-foreground/75">
-              Every Wednesday at 6:30pm
+              {whenText}
             </p>
             <div className="mt-5 rounded-xl border-2 border-secondary bg-card p-6">
               <p className="font-display text-2xl tracking-wide text-secondary">
@@ -40,12 +54,10 @@ export function DetailsSection() {
               WHERE
             </h3>
             <p className="mt-3 font-semibold text-foreground">
-              Across from Smokin&rsquo; with Chris, Southington, CT
+              {whereText}
             </p>
             <p className="mt-3 text-foreground/75">
-              The route is 5k (3.1 miles).
-              <br />
-              Walkers can turn around after 15 min.
+              {routeText}
             </p>
             <div className="mt-5 overflow-hidden rounded-xl shadow-lg">
               <iframe
@@ -67,9 +79,7 @@ export function DetailsSection() {
               WHAT&apos;S AFTER
             </h3>
             <p className="mt-3 text-foreground/75">
-              Make new friends and get to know other people by joining us at the
-              post-run social hangout, usually at the local brewery or ice cream
-              place.
+              {whatsAfterText}
             </p>
           </section>
         </div>

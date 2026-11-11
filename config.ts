@@ -4,9 +4,9 @@ export const config = {
   domain: "",
   instagramURL: "",
 
-    // Replace with your own Google "My Maps" embed URL to show start/finish
-    // pins and the exact route path: https://www.google.com/mymaps
-    mapEmbedUrl:
-      "https://www.google.com/maps?q=Smokin%E2%80%99+with+Chris,+Southington,+CT&z=14&output=embed",
+  // Replace with your own Google "My Maps" embed URL to show start/finish
+  // pins and the exact route path: https://www.google.com/mymaps
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=Smokin%E2%80%99+with+Chris,+Southington,+CT&z=14&output=embed",
 
 }
