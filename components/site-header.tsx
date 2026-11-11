@@ -14,8 +14,10 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#details", label: "Details" },
+  { href: "/about", label: "About" },
+  { href: "/calendar", label: "Calendar" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/#details", label: "Details" },
 ];
 
 export function SiteHeader() {

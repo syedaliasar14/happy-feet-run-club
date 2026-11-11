@@ -8,8 +8,9 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
 
 const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#details", label: "Run Details" },
+  { href: "/about", label: "About" },
+  { href: "/calendar", label: "Calendar" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 async function CopyrightYear() {

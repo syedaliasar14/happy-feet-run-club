@@ -22,12 +22,9 @@ export function DetailsSection({ data }: DetailsSectionProps) {
           Run Details
         </h2>
 
-        <div className="my-10 grid gap-8 md:grid-cols-3">
+        <div className="my-10 grid gap-8 md:grid-cols-2">
           <section aria-labelledby="details-when">
-            <h3
-              id="details-when"
-              className="font-heading text-3xl tracking-wide text-foreground"
-            >
+            <h3 id="details-when" className="font-heading text-4xl tracking-wide text-foreground">
               WHEN
             </h3>
             <p className="mt-3 text-foreground/75">
@@ -47,17 +44,11 @@ export function DetailsSection({ data }: DetailsSectionProps) {
           </section>
 
           <section aria-labelledby="details-where">
-            <h3
-              id="details-where"
-              className="font-heading text-3xl tracking-wide text-foreground"
-            >
+            <h3 id="details-where" className="font-heading text-4xl tracking-wide text-foreground">
               WHERE
             </h3>
             <p className="mt-3 font-semibold text-foreground">
               {whereText}
-            </p>
-            <p className="mt-3 text-foreground/75">
-              {routeText}
             </p>
             <div className="mt-5 overflow-hidden rounded-xl shadow-lg">
               <iframe
@@ -69,18 +60,19 @@ export function DetailsSection({ data }: DetailsSectionProps) {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <p className="mt-3 text-foreground/75">
+              {routeText}
+            </p>
           </section>
 
           <section aria-labelledby="details-after">
-            <h3
-              id="details-after"
-              className="font-heading text-3xl tracking-wide text-foreground"
-            >
+            <h3 id="details-after" className="font-heading text-4xl tracking-wide text-foreground">
               WHAT&apos;S AFTER
             </h3>
             <p className="mt-3 text-foreground/75">
               {whatsAfterText}
             </p>
+            
           </section>
         </div>
       </div>

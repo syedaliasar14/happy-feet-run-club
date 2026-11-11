@@ -1,5 +1,5 @@
 import type { StructureResolver } from 'sanity/structure'
-import { CogIcon, DocumentIcon } from '@sanity/icons'
+import { CalendarIcon, CogIcon, DocumentIcon } from '@sanity/icons'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -25,5 +25,35 @@ export const structure: StructureResolver = (S) =>
             .title('Home Page')
             .schemaType('homepage')
             .documentId('homepage')
+        ),
+      S.listItem()
+        .title('About Page')
+        .id('aboutPage')
+        .icon(DocumentIcon)
+        .child(
+          S.document()
+            .title('About Page')
+            .schemaType('aboutPage')
+            .documentId('aboutPage')
+        ),
+      S.listItem()
+        .title('Calendar')
+        .id('calendar')
+        .icon(CalendarIcon)
+        .child(
+          S.document()
+            .title('Calendar')
+            .schemaType('calendar')
+            .documentId('calendar')
+        ),
+      S.listItem()
+        .title('FAQ Page')
+        .id('faqPage')
+        .icon(DocumentIcon)
+        .child(
+          S.document()
+            .title('FAQ Page')
+            .schemaType('faqPage')
+            .documentId('faqPage')
         ),
     ])

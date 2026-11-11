@@ -22,6 +22,80 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
+export type MissionSectionImage = {
+  asset?: SanityImageAssetReference;
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
+  _type: "image";
+};
+
+export type FaqPage = {
+  _id: string;
+  _type: "faqPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  intro?: string;
+  faqs?: Array<{
+    question: string;
+    answer: string;
+    _type: "faq";
+    _key: string;
+  }>;
+};
+
+export type Calendar = {
+  _id: string;
+  _type: "calendar";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  events?: Array<{
+    date: string;
+    time: string;
+    cancelled?: boolean;
+    _type: "event";
+    _key: string;
+  }>;
+};
+
+export type AboutPage = {
+  _id: string;
+  _type: "aboutPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  heroSection?: {
+    title: string;
+    text: string;
+    image: MissionSectionImage;
+  };
+  missionSection?: {
+    title: string;
+    text: string;
+    image: MissionSectionImage;
+  };
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
 export type Homepage = {
   _id: string;
   _type: "homepage";
@@ -49,22 +123,6 @@ export type Homepage = {
     slogan: string;
     ctaText: string;
   };
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
 };
 
 export type SiteSettings = {
@@ -190,9 +248,13 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Homepage
+  | MissionSectionImage
+  | FaqPage
+  | Calendar
+  | AboutPage
   | SanityImageCrop
   | SanityImageHotspot
+  | Homepage
   | SiteSettings
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -203,6 +265,59 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | Geopoint
   | Slug;
+
+// Source: sanity/queries/about-page.ts
+// Variable: ABOUT_PAGE_QUERY
+// Query: *[_type == "aboutPage"][0] {    heroSection {      title,      text,      image {        asset->{          _id,          url        },        alt      }    },    missionSection {      title,      text,      image {        asset->{          _id,          url        },        alt      }    }  }
+export type ABOUT_PAGE_QUERY_RESULT = {
+  heroSection: {
+    title: string;
+    text: string;
+    image: {
+      asset: {
+        _id: string;
+        url: string;
+      } | null;
+      alt: string | null;
+    };
+  } | null;
+  missionSection: {
+    title: string;
+    text: string;
+    image: {
+      asset: {
+        _id: string;
+        url: string;
+      } | null;
+      alt: string | null;
+    };
+  } | null;
+} | null;
+
+// Source: sanity/queries/calendar.ts
+// Variable: CALENDAR_QUERY
+// Query: *[_type == "calendar"][0] {    events[] {      _key,      date,      time,      cancelled    }  }
+export type CALENDAR_QUERY_RESULT = {
+  events: Array<{
+    _key: string;
+    date: string;
+    time: string;
+    cancelled: boolean | null;
+  }> | null;
+} | null;
+
+// Source: sanity/queries/faq-page.ts
+// Variable: FAQ_PAGE_QUERY
+// Query: *[_type == "faqPage"][0] {    title,    intro,    faqs[] {      _key,      question,      answer    }  }
+export type FAQ_PAGE_QUERY_RESULT = {
+  title: string;
+  intro: string | null;
+  faqs: Array<{
+    _key: string;
+    question: string;
+    answer: string;
+  }> | null;
+} | null;
 
 // Source: sanity/queries/homepage.ts
 // Variable: HOMEPAGE_QUERY
@@ -251,6 +366,9 @@ export type SITE_SETTINGS_QUERY_RESULT = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    '*[_type == "aboutPage"][0] {\n    heroSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    },\n    missionSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }': ABOUT_PAGE_QUERY_RESULT;
+    '*[_type == "calendar"][0] {\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
+    '*[_type == "faqPage"][0] {\n    title,\n    intro,\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
     '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    instagramUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
   }
