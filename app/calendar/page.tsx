@@ -13,7 +13,7 @@ export default async function CalendarPage() {
       <SiteHeader />
       <main className="flex-1 bg-background py-16 sm:py-24">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 sm:px-6">
-          <h1 className="font-hero text-5xl tracking-wide text-primary sm:text-6xl">
+          <h1 className="font-heading text-5xl tracking-wide text-primary sm:text-6xl">
             Upcoming Runs
           </h1>
           <CalendarMonths events={calendar?.events} />

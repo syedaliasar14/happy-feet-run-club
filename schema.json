@@ -232,7 +232,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": false
+                "optional": true
               },
               "cancelled": {
                 "type": "objectAttribute",

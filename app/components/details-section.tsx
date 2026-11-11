@@ -1,4 +1,6 @@
 import { config } from "@/config";
+import Link from "next/link";
+import Image from "next/image";
 
 interface DetailsSectionProps {
   data?: {
@@ -25,27 +27,27 @@ export function DetailsSection({ data }: DetailsSectionProps) {
         <div className="my-10 grid gap-8 md:grid-cols-2">
           <section aria-labelledby="details-when">
             <h3 id="details-when" className="font-heading text-4xl tracking-wide text-foreground">
-              WHEN
+              When
             </h3>
             <p className="mt-3 text-foreground/75">
               {whenText}
             </p>
             <div className="mt-5 rounded-xl border-2 border-secondary bg-card p-6">
               <p className="font-display text-2xl tracking-wide text-secondary">
-                The next run
+                The Next Run
               </p>
               <p className="mt-2 text-foreground/75">
                 Wednesday, June 12th
               </p>
             </div>
-            <a href="#" className="btn-secondary mt-4 inline-flex">
+            <Link href="/calendar" className="btn-secondary mt-4 inline-flex">
               See Calendar
-            </a>
+            </Link>
           </section>
 
           <section aria-labelledby="details-where">
             <h3 id="details-where" className="font-heading text-4xl tracking-wide text-foreground">
-              WHERE
+              Where
             </h3>
             <p className="mt-3 font-semibold text-foreground">
               {whereText}
@@ -60,6 +62,19 @@ export function DetailsSection({ data }: DetailsSectionProps) {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <Image
+              src="/pics/parking.jpg"
+              alt="Parking near the Happy Feet Run Club meetup location"
+              className="mt-5 w-full rounded-xl shadow-lg"
+              width={1280}
+              height={720}
+            />
+          </section>
+
+          <section aria-labelledby="details-route">
+            <h3 id="details-route" className="font-heading text-4xl tracking-wide text-foreground">
+              The Route
+            </h3>
             <p className="mt-3 text-foreground/75">
               {routeText}
             </p>
@@ -67,12 +82,11 @@ export function DetailsSection({ data }: DetailsSectionProps) {
 
           <section aria-labelledby="details-after">
             <h3 id="details-after" className="font-heading text-4xl tracking-wide text-foreground">
-              WHAT&apos;S AFTER
+              What's After
             </h3>
             <p className="mt-3 text-foreground/75">
               {whatsAfterText}
             </p>
-            
           </section>
         </div>
       </div>

@@ -55,7 +55,7 @@ export type Calendar = {
   _rev: string;
   events?: Array<{
     date: string;
-    time: string;
+    time?: string;
     cancelled?: boolean;
     _type: "event";
     _key: string;
@@ -301,17 +301,15 @@ export type CALENDAR_QUERY_RESULT = {
   events: Array<{
     _key: string;
     date: string;
-    time: string;
+    time: string | null;
     cancelled: boolean | null;
   }> | null;
 } | null;
 
 // Source: sanity/queries/faq-page.ts
 // Variable: FAQ_PAGE_QUERY
-// Query: *[_type == "faqPage"][0] {    title,    intro,    faqs[] {      _key,      question,      answer    }  }
+// Query: *[_type == "faqPage"][0] {    faqs[] {      _key,      question,      answer    }  }
 export type FAQ_PAGE_QUERY_RESULT = {
-  title: string;
-  intro: string | null;
   faqs: Array<{
     _key: string;
     question: string;
@@ -368,7 +366,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "aboutPage"][0] {\n    heroSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    },\n    missionSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }': ABOUT_PAGE_QUERY_RESULT;
     '*[_type == "calendar"][0] {\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
-    '*[_type == "faqPage"][0] {\n    title,\n    intro,\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
+    '*[_type == "faqPage"][0] {\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
     '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    instagramUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
   }

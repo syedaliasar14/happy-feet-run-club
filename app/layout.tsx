@@ -6,7 +6,7 @@ import "./globals.css";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
-import { SanityLive, sanityFetch } from "@/sanity/lib/live";
+import { sanityFetch } from "@/sanity/lib/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
 
 const montserrat = Montserrat({
@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${petitCochon.variable} ${bebasNeue.variable} ${geistMono.variable} ${luckiestGuy.variable} h-full antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${montserrat.variable} ${petitCochon.variable} ${bebasNeue.variable} ${geistMono.variable} ${luckiestGuy.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
         {(await draftMode()).isEnabled && (
@@ -59,7 +59,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <DisableDraftMode />
           </>
         )}
-        <SanityLive />
       </body>
     </html>
   );

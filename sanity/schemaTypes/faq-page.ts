@@ -8,20 +8,6 @@ export const faqPage = defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
-      name: "title",
-      title: "Page Title",
-      type: "string",
-      initialValue: "Frequently Asked Questions",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "intro",
-      title: "Introduction",
-      type: "text",
-      description: "Separate paragraphs with a blank line.",
-      rows: 4,
-    }),
-    defineField({
       name: "faqs",
       title: "Questions and Answers",
       type: "array",

@@ -21,7 +21,6 @@ export const calendar = defineType({
               name: 'date',
               title: 'Date',
               type: 'date',
-              description: 'Month and day of the run (the year keeps events in the right order).',
               options: { dateFormat: 'MMMM D, YYYY' },
               validation: (rule) => rule.required(),
             }),
@@ -29,15 +28,6 @@ export const calendar = defineType({
               name: 'time',
               title: 'Time',
               type: 'string',
-              description: '24-hour format, e.g. 18:30',
-              validation: (rule) =>
-                rule
-                  .required()
-                  .regex(/^([01]\d|2[0-3]):[0-5]\d$/, {
-                    name: 'time',
-                    invert: false,
-                  })
-                  .error('Use 24-hour HH:MM format, e.g. 18:30'),
             }),
             defineField({
               name: 'cancelled',

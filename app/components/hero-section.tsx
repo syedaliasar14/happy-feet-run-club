@@ -1,4 +1,4 @@
-import { AlertCircleIcon } from "lucide-react";
+import { AlertCircleIcon, MapPinIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -62,6 +62,11 @@ export function HeroSection({ alertUpdate }: { alertUpdate?: string }) {
           >
             Just Show Up!
           </span>
+
+          <Link href="#details-where" className="mt-4 inline-flex items-center justify-center gap-2 text-xl">
+            <MapPinIcon className="size-6 fill-primary stroke-none" aria-hidden="true" />
+            Southington, CT
+          </Link>
         </div>
       </div>
     </section>
