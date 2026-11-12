@@ -73,7 +73,7 @@ export function CalendarMonths({ events, defaultTime }: CalendarMonthsProps) {
             {monthEvents.map((event) => {
               const { weekday, formatted } = formatDay(event.date);
               const cancelled = !!event.cancelled;
-              const time = event.time || defaultTime;
+              const time = event.time === "" ? defaultTime : event.time;
               return (
                 <li key={event._key} className={`flex flex-col md:flex-row gap-3 rounded-lg border-2 p-4 shadow-sm ${cancelled ? "opacity-60 border-foreground/60" : "border-secondary"}`}>
                   <div className="flex flex-wrap items-center gap-3">

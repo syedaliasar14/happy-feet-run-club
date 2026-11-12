@@ -45,7 +45,7 @@ export const calendar = defineType({
               name: 'time',
               title: 'Time',
               type: 'string',
-              initialValue: ({ parent }) => parent?.defaultTime ?? '',
+              initialValue: ({ document }) => document?.defaultTime ?? '',
             }),
             defineField({
               name: 'cancelled',
