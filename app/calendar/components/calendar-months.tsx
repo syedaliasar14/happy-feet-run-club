@@ -4,6 +4,7 @@ type CalendarEvent = NonNullable<NonNullable<CALENDAR_QUERY_RESULT>["events"]>[n
 
 interface CalendarMonthsProps {
   events?: CalendarEvent[] | null;
+  defaultTime?: string | null;
 }
 
 const TIME_ZONE = "America/New_York";
@@ -23,12 +24,13 @@ function formatMonth(date: string) {
 function formatDay(date: string) {
   const d = new Date(`${date}T12:00:00Z`);
   return {
-    weekday: d.toLocaleDateString("en-US", { weekday: "short", timeZone: "UTC" }),
+    weekday: d.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" }),
     day: d.getUTCDate(),
+    formatted: d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }),
   };
 }
 
-export function CalendarMonths({ events }: CalendarMonthsProps) {
+export function CalendarMonths({ events, defaultTime }: CalendarMonthsProps) {
   const today = todayIso();
   const upcoming = (events ?? [])
     .filter((e): e is CalendarEvent & { date: string } => !!e.date && e.date >= today)
@@ -52,35 +54,28 @@ export function CalendarMonths({ events }: CalendarMonthsProps) {
     <div className="flex flex-col gap-12">
       {[...months.entries()].map(([key, monthEvents]) => (
         <section key={key} className="flex flex-col gap-4">
-          <h2 className="font-heading text-3xl tracking-wide text-primary sm:text-4xl">
+          <h2 className="font-heading text-3xl tracking-wide text-foreground sm:text-4xl">
             {formatMonth(monthEvents[0].date)}
           </h2>
           <ul className="flex flex-col gap-3">
             {monthEvents.map((event) => {
-              const { weekday, day } = formatDay(event.date);
+              const { weekday, formatted } = formatDay(event.date);
               const cancelled = !!event.cancelled;
+              const time = event.time || defaultTime;
               return (
-                <li
-                  key={event._key}
-                  className="flex items-center gap-4 rounded-lg border border-foreground/10 bg-white/60 p-4 shadow-sm"
-                >
-                  <div
-                    className={`flex size-16 shrink-0 flex-col items-center justify-center rounded-lg text-white ${
-                      cancelled ? "bg-foreground/40" : "bg-primary"
-                    }`}
-                  >
-                    <span className="text-xs font-bold tracking-widest uppercase">{weekday}</span>
-                    <span className="font-hero text-2xl leading-none">{day}</span>
+                <li key={event._key} className={`flex flex-col gap-3 rounded-lg border-2 border-secondary p-4 shadow-sm ${cancelled ? "opacity-60" : ""}`}>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full bg-secondary px-3 py-1 text-xs font-bold tracking-widest text-white uppercase">
+                      {weekday}
+                    </span>
                   </div>
-                  <span
-                    className={`flex-1 text-lg font-bold md:text-xl ${
-                      cancelled ? "text-foreground/50 line-through" : ""
-                    }`}
-                  >
-                    {event.time}
-                  </span>
+                  
+                  <div className={`text-lg font-semibold md:text-xl ${cancelled ? "line-through text-foreground/50" : "text-foreground"}`}>
+                    {formatted} at {time}
+                  </div>
+
                   {cancelled && (
-                    <span className="rounded-full bg-foreground px-3 py-1 text-xs font-bold tracking-widest text-white uppercase">
+                    <span className="rounded-full bg-foreground px-3 py-1 w-max text-xs font-bold tracking-widest text-white uppercase">
                       Cancelled
                     </span>
                   )}

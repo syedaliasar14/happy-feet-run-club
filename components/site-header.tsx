@@ -19,7 +19,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur opacity-90 bg-foreground text-white flex w-full items-center justify-between py-2 px-4">
+    <header className="sticky top-0 z-50 backdrop-blur bg-foreground text-white flex w-full items-center justify-between py-2 px-4">
       <Link href="/" className="mt-1 font-hero text-xl tracking-widest flex items-start gap-2">
         HAPPY
         <Image src="/sun-white.svg" alt="" width={16} height={16} className="mt-0.5" />

@@ -17,7 +17,11 @@ export function AboutSection({ data }: AboutSectionProps) {
     <section id="about" className="overflow-hidden bg-primary-texture py-24 text-white sm:py-24">
       <div className="mx-auto flex flex-col md:flex-row w-full max-w-6xl items-center gap-10 md:gap-16 px-4 sm:px-6">
         <div className="relative aspect-[3/4] w-full min-w-0 flex-1 md:w-auto px-4 pr-12 md:pr-4">
-          <div className="relative aspect-[3/4] shadow-xl">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 translate-x-3 translate-y-3 rotate-2 scale-90 h-[90%] w-[95%] sm:h-full sm:w-full sm:scale-100 opacity-100 bg-foreground/60 sm:translate-x-6 sm:translate-y-6"
+          />
+          <div className="relative aspect-[3/4] shadow-xl -rotate-1">
             {imageUrl ? (
               <Image
                 src={imageUrl}

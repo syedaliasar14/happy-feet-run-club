@@ -91,7 +91,7 @@ export function DetailsSection({ data }: DetailsSectionProps) {
             <Image
               src="/social-emojis.png"
               alt="Social emojis representing the Happy Feet Run Club community"
-              className="mt-5 w-xs mx-auto"
+              className="mt-5 w-64 mx-auto"
               width={1280}
               height={720}
             />

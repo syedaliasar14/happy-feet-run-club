@@ -51,6 +51,9 @@ export type Calendar = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  seasonStart?: string;
+  seasonEnd?: string;
+  defaultTime?: string;
   events?: Array<{
     date: string;
     time?: string;
@@ -296,8 +299,11 @@ export type ABOUT_PAGE_QUERY_RESULT = {
 
 // Source: sanity/queries/calendar.ts
 // Variable: CALENDAR_QUERY
-// Query: *[_type == "calendar"][0] {    events[] {      _key,      date,      time,      cancelled    }  }
+// Query: *[_type == "calendar"][0] {    seasonStart,    seasonEnd,    defaultTime,    events[] {      _key,      date,      time,      cancelled    }  }
 export type CALENDAR_QUERY_RESULT = {
+  seasonStart: string | null;
+  seasonEnd: string | null;
+  defaultTime: string | null;
   events: Array<{
     _key: string;
     date: string;
@@ -367,7 +373,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "aboutPage"][0] {\n    heroSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    },\n    missionSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }': ABOUT_PAGE_QUERY_RESULT;
-    '*[_type == "calendar"][0] {\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
+    '*[_type == "calendar"][0] {\n    seasonStart,\n    seasonEnd,\n    defaultTime,\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
     '*[_type == "faqPage"][0] {\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
     '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    email,\n    instagramUrl,\n    facebookUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;

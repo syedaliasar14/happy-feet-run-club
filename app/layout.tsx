@@ -59,7 +59,6 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <DisableDraftMode />
           </>
         )}
-        <SanityLive />
       </body>
     </html>
   );

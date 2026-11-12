@@ -8,6 +8,23 @@ export const calendar = defineType({
   icon: CalendarIcon,
   fields: [
     defineField({
+      name: 'seasonStart',
+      title: 'Season Start',
+      type: 'date',
+      options: { dateFormat: 'MM/DD/YYYY' },
+    }),
+    defineField({
+      name: 'seasonEnd',
+      title: 'Season End',
+      type: 'date',
+      options: { dateFormat: 'MM/DD/YYYY' },
+    }),
+    defineField({
+      name: 'defaultTime',
+      title: 'Default Time',
+      type: 'string',
+    }),
+    defineField({
       name: 'events',
       title: 'Events',
       type: 'array',
@@ -21,13 +38,14 @@ export const calendar = defineType({
               name: 'date',
               title: 'Date',
               type: 'date',
-              options: { dateFormat: 'MMMM D, YYYY' },
+              options: { dateFormat: 'MM/DD/YYYY' },
               validation: (rule) => rule.required(),
             }),
             defineField({
               name: 'time',
               title: 'Time',
               type: 'string',
+              initialValue: ({ parent }) => parent?.defaultTime ?? '',
             }),
             defineField({
               name: 'cancelled',

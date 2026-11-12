@@ -15,14 +15,14 @@ export async function SiteFooter() {
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
-        <Link href="#top" className="self-center mx-auto md:mx-0 md:self-start">
+        <div className="self-center mx-auto md:mx-0 md:self-start">
           <Image
             src="/logo-text-white.svg"
             alt="Happy Feet Run Club logo"
             width={160} height={108}
             className="h-auto w-40"
           />
-        </Link>
+        </div>
 
         <nav aria-label="Footer">
           <ul className="mt-3 grid gap-2 text-center md:text-left md:grid-cols-2">
