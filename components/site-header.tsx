@@ -42,13 +42,13 @@ export function SiteHeader() {
               />
             </SheetTitle>
           </SheetHeader>
-          <nav className="flex flex-col gap-1 mt-2 px-4 font-sans">
+          <nav className="flex flex-col gap-1 mt-2 px-4 text-base font-sans font-medium">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="px-3 py-2 text-sm hover:text-secondary"
+                className="px-3 py-2 hover:text-secondary"
               >
                 {link.label}
               </Link>

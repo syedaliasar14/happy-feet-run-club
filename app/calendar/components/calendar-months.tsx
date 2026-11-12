@@ -21,12 +21,24 @@ function formatMonth(date: string) {
   });
 }
 
+function getOrdinalSuffix(day: number): string {
+  if (day > 3 && day < 21) return 'th';
+  switch (day % 10) {
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    default: return 'th';
+  }
+}
+
 function formatDay(date: string) {
   const d = new Date(`${date}T12:00:00Z`);
+  const day = d.getUTCDate();
+  const suffix = getOrdinalSuffix(day);
   return {
     weekday: d.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" }),
-    day: d.getUTCDate(),
-    formatted: d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }),
+    day: day,
+    formatted: d.toLocaleDateString("en-US", { month: "short", timeZone: "UTC" }) + ` ${day}${suffix}`,
   };
 }
 
@@ -63,22 +75,16 @@ export function CalendarMonths({ events, defaultTime }: CalendarMonthsProps) {
               const cancelled = !!event.cancelled;
               const time = event.time || defaultTime;
               return (
-                <li key={event._key} className={`flex flex-col gap-3 rounded-lg border-2 border-secondary p-4 shadow-sm ${cancelled ? "opacity-60" : ""}`}>
+                <li key={event._key} className={`flex flex-col md:flex-row gap-3 rounded-lg border-2 p-4 shadow-sm ${cancelled ? "opacity-60 border-foreground/60" : "border-secondary"}`}>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-secondary px-3 py-1 text-xs font-bold tracking-widest text-white uppercase">
-                      {weekday}
+                    <span className={`rounded-full px-3 py-1 text-xs font-bold tracking-widest text-white uppercase ${cancelled ? "bg-foreground" : "bg-secondary"}`}>
+                      {cancelled ? "Cancelled" : weekday}
                     </span>
                   </div>
                   
                   <div className={`text-lg font-semibold md:text-xl ${cancelled ? "line-through text-foreground/50" : "text-foreground"}`}>
                     {formatted} at {time}
                   </div>
-
-                  {cancelled && (
-                    <span className="rounded-full bg-foreground px-3 py-1 w-max text-xs font-bold tracking-widest text-white uppercase">
-                      Cancelled
-                    </span>
-                  )}
                 </li>
               );
             })}
