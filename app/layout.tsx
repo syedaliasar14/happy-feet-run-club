@@ -6,7 +6,7 @@ import "./globals.css";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
-import { sanityFetch } from "@/sanity/lib/live";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
 
 const montserrat = Montserrat({
@@ -59,6 +59,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <DisableDraftMode />
           </>
         )}
+        <SanityLive />
       </body>
     </html>
   );

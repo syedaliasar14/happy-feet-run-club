@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOMEPAGE_QUERY } from "@/sanity/queries/homepage";
 
+export const revalidate = 0;
+
 export default async function Home() {
   const { data: homepage } = await sanityFetch({ query: HOMEPAGE_QUERY });
 

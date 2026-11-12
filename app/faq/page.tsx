@@ -4,6 +4,8 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { FAQ_PAGE_QUERY } from "@/sanity/queries/faq-page";
 import { FaqAccordion } from "@/app/faq/components/faq-accordion";
 
+export const revalidate = 0;
+
 export default async function FaqPage() {
   const { data: faqPage } = await sanityFetch({ query: FAQ_PAGE_QUERY });
 

@@ -6,6 +6,8 @@ import { MissionSection } from "@/app/about/components/mission-section";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ABOUT_PAGE_QUERY } from "@/sanity/queries/about-page";
 
+export const revalidate = 0;
+
 export default async function AboutPage() {
   const { data } = await sanityFetch({ query: ABOUT_PAGE_QUERY });
 

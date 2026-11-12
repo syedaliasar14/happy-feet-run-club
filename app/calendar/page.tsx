@@ -5,6 +5,8 @@ import { CalendarMonths } from "@/app/calendar/components/calendar-months";
 import { sanityFetch } from "@/sanity/lib/live";
 import { CALENDAR_QUERY } from "@/sanity/queries/calendar";
 
+export const revalidate = 0;
+
 export default async function CalendarPage() {
   const { data: calendar } = await sanityFetch({ query: CALENDAR_QUERY });
 
