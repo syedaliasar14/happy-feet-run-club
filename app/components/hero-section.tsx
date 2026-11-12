@@ -46,7 +46,7 @@ export function HeroSection({ alertUpdate }: { alertUpdate?: string }) {
             Join a Run
           </Link>
           <Link href="/about" className="btn-outline">
-            About
+            About Us
           </Link>
         </div>
 
