@@ -4,7 +4,8 @@ import { homepage } from './homepage'
 import { aboutPage } from './about-page'
 import { calendar } from './calendar'
 import { faqPage } from './faq-page'
+import { galleryPage } from './gallery-page'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [siteSettings, homepage, aboutPage, calendar, faqPage],
+  types: [siteSettings, homepage, aboutPage, calendar, faqPage, galleryPage],
 }
