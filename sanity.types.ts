@@ -31,6 +31,44 @@ export type MissionSectionImage = {
   _type: "image";
 };
 
+export type GalleryPage = {
+  _id: string;
+  _type: "galleryPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seasons?: Array<{
+    season: string;
+    images?: Array<{
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+    _type: "seasonGallery";
+    _key: string;
+  }>;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
 export type FaqPage = {
   _id: string;
   _type: "faqPage";
@@ -79,22 +117,6 @@ export type AboutPage = {
     text: string;
     image: MissionSectionImage;
   };
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
 };
 
 export type Homepage = {
@@ -252,11 +274,12 @@ export type Slug = {
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | MissionSectionImage
+  | GalleryPage
+  | SanityImageCrop
+  | SanityImageHotspot
   | FaqPage
   | Calendar
   | AboutPage
-  | SanityImageCrop
-  | SanityImageHotspot
   | Homepage
   | SiteSettings
   | SanityImagePaletteSwatch
@@ -323,6 +346,23 @@ export type FAQ_PAGE_QUERY_RESULT = {
   }> | null;
 } | null;
 
+// Source: sanity/queries/gallery-page.ts
+// Variable: GALLERY_PAGE_QUERY
+// Query: *[_type == "galleryPage"][0] {    seasons[] {      _key,      season,      images[] {        _key,        alt,        asset,        crop,        hotspot      }    }  }
+export type GALLERY_PAGE_QUERY_RESULT = {
+  seasons: Array<{
+    _key: string;
+    season: string;
+    images: Array<{
+      _key: string;
+      alt: string | null;
+      asset: SanityImageAssetReference | null;
+      crop: SanityImageCrop | null;
+      hotspot: SanityImageHotspot | null;
+    }> | null;
+  }> | null;
+} | null;
+
 // Source: sanity/queries/homepage.ts
 // Variable: HOMEPAGE_QUERY
 // Query: *[_type == "homepage"][0] {    alertUpdate,    aboutSection {      image {        asset->{          _id,          url        },        alt      },      text    },    detailsSection {      whenText,      whereText,      routeText,      whatsAfterText    },    ctaSection {      slogan,      ctaText    }  }
@@ -375,6 +415,7 @@ declare module "@sanity/client" {
     '*[_type == "aboutPage"][0] {\n    heroSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    },\n    missionSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }': ABOUT_PAGE_QUERY_RESULT;
     '*[_type == "calendar"][0] {\n    seasonStart,\n    seasonEnd,\n    defaultTime,\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
     '*[_type == "faqPage"][0] {\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
+    '*[_type == "galleryPage"][0] {\n    seasons[] {\n      _key,\n      season,\n      images[] {\n        _key,\n        alt,\n        asset,\n        crop,\n        hotspot\n      }\n    }\n  }': GALLERY_PAGE_QUERY_RESULT;
     '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    email,\n    instagramUrl,\n    facebookUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
   }
