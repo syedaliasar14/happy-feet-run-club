@@ -12,7 +12,7 @@ interface DetailsSectionProps {
   };
 }
 
-const mapEmbedUrl = `https://www.google.com/maps/embed/v1/directions?key=${process.env.GOOGLE_MAPS_API_KEY}&origin=41.59964487289695,-72.88407178888987&destination=41.5802191893593,-72.89805551742943&mode=walking`; 
+const mapEmbedUrl = `https://www.google.com/maps/embed/v1/directions?key=${process.env.GOOGLE_MAPS_API_KEY}&origin=41.59964487289695,-72.88407178888987&destination=41.5802191893593,-72.89805551742943&mode=walking`;
 
 function getNextRun(events?: any[] | null) {
   if (!events || events.length === 0) {
@@ -23,7 +23,6 @@ function getNextRun(events?: any[] | null) {
 
   const upcomingEvents = events
     .filter(event => {
-      if (event.cancelled) return false;
       return event.date >= today;
     })
     .sort((a, b) => a.date.localeCompare(b.date));
@@ -52,7 +51,7 @@ function formatDate(dateString: string): string {
 
 export async function DetailsSection({ data }: DetailsSectionProps) {
   const { data: calendar } = await sanityFetch({ query: CALENDAR_QUERY });
-  
+
   const nextRun = getNextRun(calendar?.events);
   const nextRunDate = nextRun ? formatDate(nextRun.date) : null;
   const nextRunTime = nextRun?.time || calendar?.defaultTime;
@@ -82,7 +81,13 @@ export async function DetailsSection({ data }: DetailsSectionProps) {
                 The Next Run
               </p>
               <p className="mt-1 text-foreground/75">
-                {nextRunDate && nextRunTime ? `${nextRunDate} at ${nextRunTime}` : "Coming soon, check back for updates."}
+                {nextRunDate && nextRunTime ? `${nextRunDate} at ${nextRunTime}` : "No runs scheduled right now. Check back soon!"}
+              </p>
+              <p className={`mt-2 font-display uppercase ${nextRun?.cancelled ? "text-primary" : "text-foreground/75"}`}>
+                {nextRun?.cancelled ?
+                  <><span className="w-2.5 h-2.5 inline-block mr-2 shadow-primary shadow bg-primary rounded-full" />CANCELLED</>
+                  : <><span className="w-2.5 h-2.5 inline-block mr-2 shadow-green-400 shadow bg-green-400 rounded-full" />STILL ON!</>
+                }
               </p>
             </div>
             <Link href="/calendar" className="btn-secondary font-medium mt-4 inline-flex">

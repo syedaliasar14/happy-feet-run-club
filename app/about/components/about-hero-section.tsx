@@ -38,12 +38,12 @@ export function AboutHeroSection({ data }: AboutHeroSectionProps) {
           ))}
         </div>
 
-        <div className="relative aspect-[3/4] w-full min-w-0 flex-1">
+        <div className="relative aspect-square w-full min-w-0 flex-1">
           <div
             aria-hidden="true"
             className="absolute inset-0 translate-x-3 translate-y-3 rotate-2 bg-secondary sm:translate-x-4 sm:translate-y-4"
           />
-          <div className="relative size-full -rotate-1 shadow-xl">
+          <div className="relative aspect-square -rotate-1 shadow-xl">
             <Image
               src={imageUrl}
               alt={imageAlt}

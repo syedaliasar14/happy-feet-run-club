@@ -20,7 +20,7 @@ export function GallerySeasons({ seasons }: { seasons: Seasons | null | undefine
               image.asset ? (
                 <div
                   key={image._key}
-                  className="relative aspect-square overflow-hidden rounded-lg shadow-lg"
+                  className="relative aspect-square overflow-hidden shadow-lg"
                 >
                   <Image
                     src={urlFor(image as SanityImageSource).width(800).height(800).url()}
