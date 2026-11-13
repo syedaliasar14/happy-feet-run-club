@@ -17,7 +17,10 @@ export default async function GalleryPage() {
           <h1 className="font-heading text-5xl tracking-wide text-foreground sm:text-6xl">
             Gallery
           </h1>
-          <GallerySeasons seasons={gallery?.seasons} />
+          <GallerySeasons
+            seasonList={gallery?.seasonList}
+            latestSeason={gallery?.latestSeason}
+          />
         </div>
       </main>
       <SiteFooter />
