@@ -6,8 +6,9 @@ import "./globals.css";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { sanityFetch } from "@/sanity/lib/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/queries/site-settings";
+import { urlFor } from "@/sanity/lib/image";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -45,6 +46,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings?.title || config.title,
     description: settings?.description || config.description,
+    openGraph: {
+      title: settings?.title || config.title,
+      description: settings?.description || config.description,
+      images: settings?.image ? [urlFor(settings.image).width(1200).height(630).url()] : undefined,
+    }
   };
 }
 
