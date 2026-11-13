@@ -348,9 +348,13 @@ export type FAQ_PAGE_QUERY_RESULT = {
 
 // Source: sanity/queries/gallery-page.ts
 // Variable: GALLERY_PAGE_QUERY
-// Query: *[_type == "galleryPage"][0] {    seasons[] {      _key,      season,      images[] {        _key,        alt,        asset,        crop,        hotspot      }    }  }
+// Query: *[_type == "galleryPage"][0] {    "seasons": seasons[] {      _key,      season    },    "selectedSeason": coalesce(seasons[_key == $seasonKey][0], seasons[-1]) {      _key,      season,      images[] {        _key,        alt,        asset,        crop,        hotspot      }    }  }
 export type GALLERY_PAGE_QUERY_RESULT = {
   seasons: Array<{
+    _key: string;
+    season: string;
+  }> | null;
+  selectedSeason: {
     _key: string;
     season: string;
     images: Array<{
@@ -360,7 +364,7 @@ export type GALLERY_PAGE_QUERY_RESULT = {
       crop: SanityImageCrop | null;
       hotspot: SanityImageHotspot | null;
     }> | null;
-  }> | null;
+  } | null;
 } | null;
 
 // Source: sanity/queries/homepage.ts
@@ -415,7 +419,7 @@ declare module "@sanity/client" {
     '*[_type == "aboutPage"][0] {\n    heroSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    },\n    missionSection {\n      title,\n      text,\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }': ABOUT_PAGE_QUERY_RESULT;
     '*[_type == "calendar"][0] {\n    seasonStart,\n    seasonEnd,\n    defaultTime,\n    events[] {\n      _key,\n      date,\n      time,\n      cancelled\n    }\n  }': CALENDAR_QUERY_RESULT;
     '*[_type == "faqPage"][0] {\n    faqs[] {\n      _key,\n      question,\n      answer\n    }\n  }': FAQ_PAGE_QUERY_RESULT;
-    '*[_type == "galleryPage"][0] {\n    seasons[] {\n      _key,\n      season,\n      images[] {\n        _key,\n        alt,\n        asset,\n        crop,\n        hotspot\n      }\n    }\n  }': GALLERY_PAGE_QUERY_RESULT;
+    '*[_type == "galleryPage"][0] {\n    "seasons": seasons[] {\n      _key,\n      season\n    },\n    "selectedSeason": coalesce(seasons[_key == $seasonKey][0], seasons[-1]) {\n      _key,\n      season,\n      images[] {\n        _key,\n        alt,\n        asset,\n        crop,\n        hotspot\n      }\n    }\n  }': GALLERY_PAGE_QUERY_RESULT;
     '*[_type == "homepage"][0] {\n    alertUpdate,\n    aboutSection {\n      image {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      },\n      text\n    },\n    detailsSection {\n      whenText,\n      whereText,\n      routeText,\n      whatsAfterText\n    },\n    ctaSection {\n      slogan,\n      ctaText\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "siteSettings"][0] {\n    title,\n    description,\n    image,\n    email,\n    instagramUrl,\n    facebookUrl,\n  }': SITE_SETTINGS_QUERY_RESULT;
   }
