@@ -26,7 +26,7 @@ export function AboutHeroSection({ data }: AboutHeroSectionProps) {
   return (
     <section className="relative overflow-hidden bg-[#f7eee3] py-16 pb-28 sm:py-24 sm:pb-36">
       <div className="absolute inset-0 bg-[url('/textures/scratches.png')] opacity-30" /> 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 sm:px-6 md:flex-row md:gap-16">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 sm:px-6 md:flex-row md:gap-16">
         <div className="flex w-full min-w-0 flex-1 flex-col gap-6">
           <h1 className="font-heading text-5xl tracking-wide text-primary sm:text-6xl">
             {title}
