@@ -61,7 +61,7 @@ export function AboutSection({ data }: AboutSectionProps) {
           <p className="leading-relaxed text-lg md:text-xl text-balance">
             {text}
           </p>
-          <Link href="#details" className="btn-secondary mt-8">
+          <Link href="#details" className="btn-secondary font-medium mt-8">
             Join a Run
           </Link>
         </div>
