@@ -25,9 +25,9 @@ export function MissionSection({ data }: MissionSectionProps) {
 
   return (
     <section className="relative overflow-hidden bg-primary-texture pt-28 pb-16 text-white sm:pt-40 sm:pb-24">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 sm:px-6 md:flex-row-reverse md:gap-16">
+      <div className="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 sm:px-6 md:flex-row-reverse md:gap-16">
         <div className="flex w-full min-w-0 flex-1 flex-col gap-6">
-          <h2 className="font-heading text-4xl tracking-wide sm:text-5xl">
+          <h2 className="font-heading text-5xl tracking-wide sm:text-6xl">
             {title}
           </h2>
           {paragraphs.map((paragraph, i) => (
