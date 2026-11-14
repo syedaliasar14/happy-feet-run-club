@@ -12,7 +12,7 @@ interface DetailsSectionProps {
   };
 }
 
-const mapEmbedUrl = `https://www.google.com/maps/embed/v1/directions?key=${process.env.GOOGLE_MAPS_API_KEY}&origin=41.59964487289695,-72.88407178888987&destination=41.5802191893593,-72.89805551742943&mode=walking`;
+const mapEmbedUrl = `https://www.google.com/maps/embed/v1/directions?key=${process.env.GOOGLE_MAPS_API_KEY}&origin=41.5997848,-72.8836361&destination=41.5802191893593,-72.89805551742943&mode=walking`;
 
 function getNextRun(events?: any[] | null) {
   if (!events || events.length === 0) {
