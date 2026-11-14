@@ -33,7 +33,7 @@ export default async function CalendarPage() {
             Calendar
           </h1>
 
-          <div className="text-xl font-display text-primary flex flex-col md:flex-row gap-4">
+          <div className="text-2xl font-display text-primary flex flex-col md:flex-row gap-4">
             <div className="border-2 border-primary p-4 rounded-lg w-full shadow">
               Season Start<br />
               <span className="text-base font-semibold font-sans text-foreground">{formatDate(calendar?.seasonStart)}</span>
